@@ -1,7 +1,7 @@
 import React from "react";
-import { Noto_Sans } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 
-const notoSans = Noto_Sans({ weight: "400", subsets: ["latin"] });
+const font = Open_Sans({ weight: "400", subsets: ["latin"] });
 
 export type InputProps = {
   value?: string;
@@ -16,10 +16,12 @@ export const Input = (props: InputProps) => {
   };
 
   return (
-    <div className="p-4 box-border relative overflow-hidden rounded bg-white shadow">
+    <div
+      className={`p-4 box-border relative overflow-hidden rounded bg-white shadow ${font.className}`}
+    >
       <input
         value={props.value}
-        className={`${notoSans.className} h-6 w-full box-border leading-none text-slate-700`}
+        className="h-6 w-full box-border leading-none text-slate-700"
         onKeyUp={onKeyUp}
         type="text"
         placeholder={props.placeholder}

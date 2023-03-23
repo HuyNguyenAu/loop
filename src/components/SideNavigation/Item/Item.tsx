@@ -1,8 +1,8 @@
 import React from "react";
-import { Noto_Sans } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import { IconProps } from "@radix-ui/react-icons/dist/types";
 
-const notoSans = Noto_Sans({ weight: "400", subsets: ["latin"] });
+const font = Open_Sans({ weight: "400", subsets: ["latin"] });
 
 export type ItemProps = {
   icon: React.ForwardRefExoticComponent<
@@ -18,11 +18,11 @@ export const Item = (props: ItemProps) => {
 
   return (
     <div
-      className={`h-10 w-full pl-6 pr-3 box-border flex items-center rounded-lg cursor-pointer ${backgroundColour} ${hover}`}
+      className={`h-10 w-full pl-6 pr-3 box-border flex items-center rounded-lg cursor-pointer ${font.className} ${backgroundColour} ${hover}`}
     >
       <div className="flex items-center gap-2">
         <props.icon className="h-5 w-5 box-border" />
-        <p className={`${notoSans.className} text-sm text-[#424242]`}>
+        <p className={`text-sm text-[#424242]`}>
           {props.text}
         </p>
       </div>
