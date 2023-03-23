@@ -1,3 +1,4 @@
+import { EnvelopeOpenIcon } from "@radix-ui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Item } from "./Item";
@@ -10,6 +11,7 @@ export default {
 
 export const Default: StoryObj<typeof Item> = {
   args: {
-    text: "Hello World"
+    icon: EnvelopeOpenIcon,
+    text: "Hello World",
   },
 };
