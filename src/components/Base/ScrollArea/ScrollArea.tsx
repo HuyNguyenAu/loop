@@ -8,7 +8,7 @@ export type ScrollAreaProps = {
 export const ScrollArea = (props: PropsWithChildren<ScrollAreaProps>) => {
   return (
     <RadixScrollArea.Root
-      className={`${props.className} w-full pr-4 box-border relative overflow-hidden bg-[#F1F6F9]`}
+      className={`${props.className} w-full pr-4 box-border relative overflow-hidden`}
     >
       <RadixScrollArea.Viewport className="h-full w-full box-border rounded-[inherit]">
         {props.children}
