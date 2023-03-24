@@ -14,7 +14,7 @@ export type ItemProps = {
 
 export const Item = (props: ItemProps) => {
   const border = props.selected
-    ? "rounded-lg border-solid border-2 border-black pl-[calc(1.5rem-2px)] pr-0"
+    ? "rounded-lg border-solid border-2 border-black pl-[calc(1.5rem-2px)] pr-[0px]"
     : "";
 
   return (
