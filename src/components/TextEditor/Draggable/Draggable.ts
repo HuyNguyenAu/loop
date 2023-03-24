@@ -1,6 +1,6 @@
 import { mergeAttributes, Node } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
-import { Component } from "./Component";
+import { Item } from "./Item/Item";
 
 export const Draggable = Node.create({
   name: "draggable",
@@ -22,6 +22,6 @@ export const Draggable = Node.create({
     ];
   },
   addNodeView() {
-    return ReactNodeViewRenderer(Component);
+    return ReactNodeViewRenderer(Item);
   },
 });

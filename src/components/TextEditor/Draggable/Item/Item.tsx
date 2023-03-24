@@ -1,7 +1,7 @@
 import { DragHandleDots2Icon } from "@radix-ui/react-icons";
-import { NodeViewContent, NodeViewProps, NodeViewWrapper } from "@tiptap/react";
+import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 
-export const Component = (props: NodeViewProps) => {
+export const Item = () => {
   return (
     <NodeViewWrapper className="flex p-2 my-2">
       <div
