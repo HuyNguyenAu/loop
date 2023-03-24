@@ -4,7 +4,6 @@ import StarterKit from "@tiptap/starter-kit";
 import Focus from "@tiptap/extension-focus";
 import { Open_Sans } from "next/font/google";
 import { Draggable } from "./Draggable";
-import { EditorProps } from "@tiptap/pm/view";
 import { SlashMenuExtension } from "../SlashMenu/SlashMenuExtension";
 
 const font = Open_Sans({ weight: "400", subsets: ["latin"] });

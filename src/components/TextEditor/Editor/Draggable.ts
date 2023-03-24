@@ -14,7 +14,7 @@ export const Draggable = Node.create({
       },
     ];
   },
-  renderHTML({ HTMLAttributes }) {
+  renderHTML({ HTMLAttributes }: { HTMLAttributes: Record<string, any> }) {
     return [
       "div",
       mergeAttributes(HTMLAttributes, { "data-type": "draggable" }),
@@ -24,11 +24,4 @@ export const Draggable = Node.create({
   addNodeView() {
     return ReactNodeViewRenderer(Component);
   },
-  addCommands() {
-		return {
-			setParagraph: () => ({ commands }) => {
-				return commands.toggleNode('paragraphDiv', 'paragraphDiv')
-			},
-		}
-	},
 });
