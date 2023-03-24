@@ -13,10 +13,10 @@ export type SlashMenuOptions = {
   suggestion: Omit<SuggestionOptions, "editor">;
 };
 
-export const SlashMenuPluginKey = new PluginKey("mention");
+export const SlashMenuPluginKey = new PluginKey("slashmenu");
 
 export const SlashMenu = Node.create<SlashMenuOptions>({
-  name: "mention",
+  name: "slashmenu",
   addOptions() {
     return {
       HTMLAttributes: {},
@@ -200,10 +200,9 @@ export const SlashMenu = Node.create<SlashMenuOptions>({
   },
 });
 
-
 export const SlashMenuExtension = SlashMenu.configure({
   HTMLAttributes: {
-    class: "mention",
+    class: "",
   },
   suggestion: SlashMenuSuggestion,
 });
