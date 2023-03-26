@@ -6,8 +6,10 @@ import {
   ClockIcon,
   BellIcon,
 } from "@radix-ui/react-icons";
+import { ContextMenu as RadixContextMenu } from "../Base/ContextMenu/ContextMenu";
 import ScrollArea from "../Base/ScrollArea/ScrollArea";
 import Separator from "../Base/Separator/Separator";
+import { ContextMenu } from "./ContextMenu/ContextMenu";
 import { Item, ItemProps } from "./Item/Item";
 
 export type SideNavigationProps = {
@@ -15,7 +17,13 @@ export type SideNavigationProps = {
 };
 
 export const SideNavigation = (props: SideNavigationProps) => {
-  const items = props.items.map((props, index) => <Item {...props} />);
+  const items = (
+    <div className="flex flex-col gap-1">
+      {props.items.map((props, index) => (
+        <Item {...props} />
+      ))}
+    </div>
+  );
 
   return (
     <div className="h-screen w-80 p-2 box-border bg-[#F1F6F9]">
@@ -42,7 +50,9 @@ export const SideNavigation = (props: SideNavigationProps) => {
       <Separator className="bg-[#CFCFCF] mb-3" orientation="horizontal" />
       {/* Side Drawer: 1 rem, Header: 2.875rem, Sticky Items: 6 rem, Separator: 0.75 rem + 1 px. */}
       <ScrollArea className="h-[calc(100vh-1rem-2.875rem-6rem-0.75rem-1px)]">
-        <div className="flex flex-col gap-1">{items}</div>
+        <RadixContextMenu trigger={items}>
+          <ContextMenu />
+        </RadixContextMenu>
       </ScrollArea>
     </div>
   );
