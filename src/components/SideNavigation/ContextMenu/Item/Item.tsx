@@ -9,12 +9,13 @@ export type ItemProps = {
     IconProps & React.RefAttributes<SVGSVGElement>
   >;
   text: string;
+  keyboard?: string;
   selected?: boolean;
 };
 
 export const Item = (props: ItemProps) => {
   const border = props.selected ? "border-black" : "border-transparent";
-  
+
   return (
     <div
       className={`h-10 px-3 w-full border border-solid box-border flex items-center justify-between rounded-lg cursor-pointer bg-white hover:bg-[#EBEBEB] ${font.className} ${border}`}
@@ -23,7 +24,7 @@ export const Item = (props: ItemProps) => {
         <props.icon className="h-5 w-5 box-border" />
         <p className={`text-sm text-[#424242]`}>{props.text}</p>
       </div>
-      <p className="text-[#424242] font-normal text-sm">⌘+B</p>
+      <p className="text-[#424242] font-normal text-sm">{props.keyboard}</p>
     </div>
   );
 };
