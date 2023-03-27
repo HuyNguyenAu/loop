@@ -9,7 +9,7 @@ export const ContextMenu = (props: ContextMenu) => {
   return (
     <ScrollArea>
       <div className="flex flex-col gap-1">
-        <Item icon={FilePlusIcon} text="New SubPage" />
+        <Item icon={FilePlusIcon} text="New Subpage" />
         <Item icon={OpenInNewWindowIcon} text="Open" />
         <Item icon={CursorTextIcon} text="Rename" />
         <Separator className="bg-[#CFCFCF]" orientation="horizontal" />
