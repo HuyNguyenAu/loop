@@ -1,14 +1,11 @@
 import ScrollArea from "../../Base/ScrollArea/ScrollArea";
-import {
-  useEditor,
-  EditorContent,
-  Extensions,
-  BubbleMenu,
-} from "@tiptap/react";
+import { useEditor, EditorContent, Extensions } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Focus from "@tiptap/extension-focus";
 import { Open_Sans } from "next/font/google";
 import { SlashMenuExtension } from "../SlashMenu/SlashMenuExtension";
+import { ContextMenu } from "../ContextMenu/ContextMenu";
+import { BubbleMenu } from "../BubbleMenu/BubbleMenu";
 
 const font = Open_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -31,9 +28,10 @@ export const Editor = () => {
 
   return (
     <ScrollArea className={`h-screen ${font.className}`}>
-      <div className="flex flex-col">
-        <EditorContent editor={editor} />
-      </div>
+      <BubbleMenu editor={editor ?? undefined}>
+        <ContextMenu />
+      </BubbleMenu>
+      <EditorContent editor={editor} />
     </ScrollArea>
   );
 };
