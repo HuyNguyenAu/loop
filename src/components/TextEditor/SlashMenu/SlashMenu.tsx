@@ -1,5 +1,7 @@
 import React, {
   forwardRef,
+  ReactNode,
+  RefObject,
   useEffect,
   useImperativeHandle,
   useState,
@@ -15,6 +17,22 @@ export type SlashMenuProps = {
 
 export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollAreaRef = React.useRef<HTMLDivElement>(null);
+  const itemRefs: Array<RefObject<HTMLDivElement>> = [];
+  const items: Array<ReactNode> = props.items.map((item, index) => {
+    itemRefs.push(React.createRef<HTMLDivElement>());
+
+    return (
+      <Item
+        customRef={itemRefs[index]}
+        key={`slash_item_${index}`}
+        icon={item.icon}
+        text={item.text}
+        selected={index === selectedIndex}
+      />
+    );
+  });
 
   const selectItem = (index: any) => {
     const item = props.items[index];
@@ -40,6 +58,14 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
 
   useEffect(() => setSelectedIndex(0), [props.items]);
 
+  useEffect(() => {
+    scrollAreaRef.current?.scrollTo({
+      top:
+        (itemRefs[selectedIndex]?.current?.offsetHeight ?? 0) * selectedIndex +
+        (4 * selectedIndex + 1),
+    });
+  }, [selectedIndex]);
+
   useImperativeHandle(ref, () => ({
     onKeyDown: ({ event }: any) => {
       if (event.key === "ArrowUp") {
@@ -61,16 +87,11 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
     },
   }));
 
-  const items = props.items.map((item, index) => (
-    <Item
-      icon={item.icon}
-      text={item.text}
-      selected={index === selectedIndex}
-    />
-  ));
-
   return (
-    <ScrollArea className="h-[21rem] w-60 shadow-lg rounded-xl">
+    <ScrollArea
+      customRef={scrollAreaRef}
+      className="h-[21rem] w-60 shadow-lg rounded-xl"
+    >
       <div className="flex flex-col gap-1 pl-4 py-4">{items}</div>
     </ScrollArea>
   );

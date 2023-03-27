@@ -3,9 +3,13 @@ import tippy from "tippy.js";
 
 import {
   CheckboxIcon,
+  FontBoldIcon,
+  FontItalicIcon,
   HeadingIcon,
   ListBulletIcon,
+  StrikethroughIcon,
   TableIcon,
+  UnderlineIcon,
 } from "@radix-ui/react-icons";
 import { SlashMenu } from "../SlashMenu/SlashMenu";
 import { ItemProps } from "./Item/Item";
@@ -24,6 +28,22 @@ export const SlashMenuSuggestion = {
       {
         text: "Heading 3",
         icon: HeadingIcon,
+      },
+      {
+        text: "Bold",
+        icon: FontBoldIcon,
+      },
+      {
+        text: "Italic",
+        icon: FontItalicIcon,
+      },
+      {
+        text: "Underline",
+        icon: UnderlineIcon,
+      },
+      {
+        text: "Strikethrough",
+        icon: StrikethroughIcon,
       },
       {
         text: "Table",
