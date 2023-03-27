@@ -16,35 +16,5 @@ export default {
 
 export const Default: StoryObj<typeof SlashMenu> = {
   args: {
-    items: [
-      {
-        text: "Heading 1",
-        icon: HeadingIcon,
-      },
-      {
-        text: "Heading 2",
-        icon: HeadingIcon,
-      },
-      {
-        text: "Heading 3",
-        icon: HeadingIcon,
-      },
-      {
-        text: "Table",
-        icon: TableIcon,
-      },
-      {
-        text: "Check List",
-        icon: CheckboxIcon,
-      },
-      {
-        text: "Bullet List",
-        icon: ListBulletIcon,
-      },
-      {
-        text: "Numbered List",
-        icon: ListBulletIcon,
-      },
-    ],
   },
 };

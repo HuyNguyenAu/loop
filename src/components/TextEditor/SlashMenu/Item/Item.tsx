@@ -11,6 +11,7 @@ export type ItemProps = {
   text: string;
   selected?: boolean;
   customRef?: Ref<HTMLDivElement>;
+  onClick?: () => void;
 };
 
 export const Item = (props: ItemProps) => {
@@ -18,11 +19,12 @@ export const Item = (props: ItemProps) => {
 
   return (
     <div
+      onClick={props.onClick}
       ref={props.customRef}
-      className={`h-10 w-44 px-3 border border-solid box-border flex items-center rounded-lg cursor-pointer bg-white hover:bg-[#EBEBEB] ${font.className} ${border}`}
+      className={`box-border flex h-10 w-44 cursor-pointer items-center rounded-lg border border-solid bg-white px-3 hover:bg-[#EBEBEB] ${font.className} ${border}`}
     >
       <div className="flex items-center gap-2">
-        <props.icon className="h-5 w-5 box-border" />
+        <props.icon className="box-border h-5 w-5" />
         <p className={`text-sm text-[#424242]`}>{props.text}</p>
       </div>
     </div>

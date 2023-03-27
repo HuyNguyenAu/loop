@@ -18,13 +18,13 @@ export const Item = (props: ItemProps) => {
 
   return (
     <div
-      className={`h-10 px-3 w-full border border-solid box-border flex items-center justify-between rounded-lg cursor-pointer bg-white hover:bg-[#EBEBEB] ${font.className} ${border}`}
+      className={`box-border flex h-10 w-full cursor-pointer items-center justify-between rounded-lg border border-solid bg-white px-3 hover:bg-[#EBEBEB] ${font.className} ${border}`}
     >
       <div className="flex items-center gap-3">
-        <props.icon className="h-5 w-5 box-border" />
+        <props.icon className="box-border h-5 w-5" />
         <p className={`text-sm text-[#424242]`}>{props.text}</p>
       </div>
-      <p className="text-[#424242] font-normal text-sm">{props.keyboard}</p>
+      <p className="text-sm font-normal text-[#424242]">{props.keyboard}</p>
     </div>
   );
 };

@@ -22,9 +22,9 @@ export type ContextMenu = {};
 
 export const ContextMenu = (props: ContextMenu) => {
   return (
-    <ScrollArea className="h-[350px] pl-4 py-4 shadow-lg rounded-xl bg-white">
+    <ScrollArea className="h-[350px] rounded-xl bg-white py-4 pl-4 shadow-lg">
       <div className="flex flex-col gap-1">
-        <div className="p-1 flex gap-1  ">
+        <div className="flex gap-1 p-1  ">
           <Toggle icon={FontBoldIcon} value="" />
           <Toggle icon={FontItalicIcon} value="" />
           <Toggle icon={StrikethroughIcon} value="" />

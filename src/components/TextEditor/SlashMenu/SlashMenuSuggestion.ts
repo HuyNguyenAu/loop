@@ -1,68 +1,8 @@
 import { ReactRenderer } from "@tiptap/react";
 import tippy from "tippy.js";
-
-import {
-  CheckboxIcon,
-  FontBoldIcon,
-  FontItalicIcon,
-  HeadingIcon,
-  ListBulletIcon,
-  StrikethroughIcon,
-  TableIcon,
-  UnderlineIcon,
-} from "@radix-ui/react-icons";
 import { SlashMenu } from "../SlashMenu/SlashMenu";
-import { ItemProps } from "./Item/Item";
 
 export const SlashMenuSuggestion = {
-  items: (): Array<ItemProps> => {
-    return [
-      {
-        text: "Heading 1",
-        icon: HeadingIcon,
-      },
-      {
-        text: "Heading 2",
-        icon: HeadingIcon,
-      },
-      {
-        text: "Heading 3",
-        icon: HeadingIcon,
-      },
-      {
-        text: "Bold",
-        icon: FontBoldIcon,
-      },
-      {
-        text: "Italic",
-        icon: FontItalicIcon,
-      },
-      {
-        text: "Underline",
-        icon: UnderlineIcon,
-      },
-      {
-        text: "Strikethrough",
-        icon: StrikethroughIcon,
-      },
-      {
-        text: "Table",
-        icon: TableIcon,
-      },
-      {
-        text: "Check List",
-        icon: CheckboxIcon,
-      },
-      {
-        text: "Bullet List",
-        icon: ListBulletIcon,
-      },
-      {
-        text: "Numbered List",
-        icon: ListBulletIcon,
-      },
-    ];
-  },
   render: () => {
     let component: any;
     let popup: any;

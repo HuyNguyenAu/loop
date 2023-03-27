@@ -20,25 +20,25 @@ export const SideNavigation = (props: SideNavigationProps) => {
   const items = (
     <div className="flex flex-col gap-1">
       {props.items.map((props, index) => (
-        <Item {...props} />
+        <Item key={`side_nav_item_${index}`} {...props} />
       ))}
     </div>
   );
 
   return (
-    <div className="h-screen w-80 p-2 box-border bg-[#F1F6F9]">
-      <div className="mb-1.5 w-full flex items-center justify-between">
-        <div className="h-10 w-full pl-3 mr-3 box-border flex items-center gap-1.5 rounded-lg cursor-pointer hover:bg-[#EBEBEB]">
+    <div className="box-border h-screen w-80 bg-[#F1F6F9] p-2">
+      <div className="mb-1.5 flex w-full items-center justify-between">
+        <div className="mr-3 box-border flex h-10 w-full cursor-pointer items-center gap-1.5 rounded-lg pl-3 hover:bg-[#EBEBEB]">
           <RocketIcon className="h-6 w-6 text-violet-700" />
           <p className="text-lg font-bold text-[#242424]">Daily Life</p>
-          <p className="ml-2.5 px-1.5 py-0.5 rounded-lg text-xs font-semibold bg-violet-100 text-violet-700">
+          <p className="ml-2.5 rounded-lg bg-violet-100 px-1.5 py-0.5 text-xs font-semibold text-violet-700">
             Alpha
           </p>
         </div>
-        <div className="pr-3 flex gap-2.5 text-[#616161]">
-          <BellIcon className="h-4 w-4 hover:text-violet-700 cursor-pointer" />
-          <MagnifyingGlassIcon className="h-4 w-4 hover:text-violet-700 cursor-pointer" />
-          <PinLeftIcon className="h-4 w-4 hover:text-violet-700 cursor-pointer" />
+        <div className="flex gap-2.5 pr-3 text-[#616161]">
+          <BellIcon className="h-4 w-4 cursor-pointer hover:text-violet-700" />
+          <MagnifyingGlassIcon className="h-4 w-4 cursor-pointer hover:text-violet-700" />
+          <PinLeftIcon className="h-4 w-4 cursor-pointer hover:text-violet-700" />
         </div>
       </div>
       <ScrollArea className="h-24">
@@ -47,7 +47,7 @@ export const SideNavigation = (props: SideNavigationProps) => {
           <Item icon={StarIcon} text="Favourites" />
         </div>
       </ScrollArea>
-      <Separator className="bg-[#CFCFCF] mb-3" orientation="horizontal" />
+      <Separator className="mb-3 bg-[#CFCFCF]" orientation="horizontal" />
       {/* Side Drawer: 1 rem, Header: 2.875rem, Sticky Items: 6 rem, Separator: 0.75 rem + 1 px. */}
       <ScrollArea className="h-[calc(100vh-1rem-2.875rem-6rem-0.75rem-1px)]">
         <RadixContextMenu trigger={items}>

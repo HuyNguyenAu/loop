@@ -3,9 +3,9 @@ import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 
 export const Item = () => {
   return (
-    <NodeViewWrapper className="flex p-2 my-2">
+    <NodeViewWrapper className="my-2 flex p-2">
       <div
-        className="drag-handle-parent h-4 w-4 flex-none relative top-[0.3rem] mr-[0.5rem] cursor-grab"
+        className="drag-handle-parent relative top-[0.3rem] mr-[0.5rem] h-4 w-4 flex-none cursor-grab"
         contentEditable="false"
         draggable="true"
         data-drag-handle="true"

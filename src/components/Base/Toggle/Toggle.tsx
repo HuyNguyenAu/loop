@@ -14,11 +14,11 @@ export type ToggleProps = {
 export const Toggle = (props: ToggleProps) => {
   return (
     <RadixToggle.Root
-      className={`h-10 w-10 border border-solid box-border flex items-center justify-center rounded-lg cursor-pointer bg-white hover:bg-[#EBEBEB] text-[#424242] data-[state=on]:border-[#EBEBEB] data-[state=off]:border-transparent ${font.className}`}
+      className={`box-border flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-solid bg-white text-[#424242] hover:bg-[#EBEBEB] data-[state=on]:border-[#EBEBEB] data-[state=off]:border-transparent ${font.className}`}
       value={props.value}
       aria-label="Toggle"
     >
-      <props.icon className="h-5 w-5 box-border" />
+      <props.icon className="box-border h-5 w-5" />
     </RadixToggle.Root>
   );
 };
