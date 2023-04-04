@@ -11,6 +11,7 @@ export type ItemProps = {
   text: string;
   keyboard?: string;
   selected?: boolean;
+  onClick?: () => void;
 };
 
 export const Item = (props: ItemProps) => {
@@ -19,6 +20,7 @@ export const Item = (props: ItemProps) => {
   return (
     <div
       className={`box-border flex h-10 w-full cursor-pointer items-center justify-between rounded-lg border border-solid bg-white px-3 hover:bg-[#EBEBEB] ${font.className} ${border}`}
+      onClick={props.onClick}
     >
       <div className="flex items-center gap-3">
         <props.icon className="box-border h-5 w-5" />
