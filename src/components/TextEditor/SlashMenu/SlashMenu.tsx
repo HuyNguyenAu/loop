@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, {
   forwardRef,
   ReactNode,
@@ -9,6 +10,7 @@ import React, {
 } from "react";
 import {
   CheckboxIcon,
+  CodeIcon,
   FontBoldIcon,
   FontItalicIcon,
   HeadingIcon,
@@ -26,55 +28,134 @@ export type SlashMenuProps = {
   command: any;
 };
 
+export enum Commands {
+  Heading1,
+  Heading2,
+  Heading3,
+  Bold,
+  Italic,
+  Underline,
+  StrikeThrough,
+  Code,
+  Table,
+  CheckList,
+  BulletList,
+  NumberedList,
+}
+
 export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  // onClick={() => props.editor.chain().focus().toggleHeading({ level: 1 }).run()}
   const scrollAreaRef = React.useRef<HTMLDivElement>(null);
   const itemRefs: Array<RefObject<HTMLDivElement>> = [];
   const children = useRef<Array<ItemProps>>([
     {
       text: "Heading 1",
       icon: HeadingIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.Heading1,
+        });
+      },
     },
     {
       text: "Heading 2",
       icon: HeadingIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.Heading2,
+        });
+      },
     },
     {
       text: "Heading 3",
       icon: HeadingIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.Heading3,
+        });
+      },
     },
     {
       text: "Bold",
       icon: FontBoldIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.Bold,
+        });
+      },
     },
     {
       text: "Italic",
       icon: FontItalicIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.Italic,
+        });
+      },
     },
     {
       text: "Underline",
       icon: UnderlineIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.Underline,
+        });
+      },
     },
     {
       text: "Strikethrough",
       icon: StrikethroughIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.StrikeThrough,
+        });
+      },
     },
     {
-      text: "Table",
-      icon: TableIcon,
+      text: "Code",
+      icon: CodeIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.Code,
+        });
+      },
     },
+    // TODO: Requires extra controls such as delete column/row, add column/row before/after, merge cells, .etc.
+    // {
+    //   text: "Table",
+    //   icon: TableIcon,
+    //   onClick: () => {
+    //     props.command({
+    //       command: Commands.Table,
+    //     });
+    //   },
+    // },
     {
       text: "Check List",
       icon: CheckboxIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.CheckList,
+        });
+      },
     },
     {
       text: "Bullet List",
       icon: ListBulletIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.BulletList,
+        });
+      },
     },
     {
       text: "Numbered List",
       icon: ListBulletIcon,
+      onClick: () => {
+        props.command({
+          command: Commands.NumberedList,
+        });
+      },
     },
   ]);
   const items: Array<ReactNode> = children.current.map((item, index) => {
@@ -93,9 +174,11 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
   const selectItem = (index: any) => {
     const item = children.current[index];
 
-    if (item) {
-      props.command({ id: item });
+    if (item === undefined || item.onClick === undefined) {
+      return;
     }
+
+    item.onClick();
   };
 
   const upHandler = () => {
@@ -120,7 +203,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
         (itemRefs[selectedIndex]?.current?.offsetHeight ?? 0) * selectedIndex +
         (4 * selectedIndex + 1),
     });
-  }, [selectedIndex, itemRefs]);
+  }, [selectedIndex]);
 
   useImperativeHandle(ref, () => ({
     onKeyDown: ({ event }: any) => {

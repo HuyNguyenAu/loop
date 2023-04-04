@@ -2,6 +2,7 @@ import { mergeAttributes, Node, Editor, Range } from "@tiptap/core";
 import { Node as ProseMirrorNode } from "@tiptap/pm/model";
 import { EditorState, PluginKey, Transaction } from "@tiptap/pm/state";
 import Suggestion, { SuggestionOptions } from "@tiptap/suggestion";
+import { Commands } from "./SlashMenu";
 import { SlashMenuSuggestion } from "./SlashMenuSuggestion";
 
 export type SlashMenuOptions = {
@@ -41,31 +42,60 @@ export const SlashMenu = Node.create<SlashMenuOptions>({
           range: Range;
           props: any;
         }) => {
-          // increase range.to by one when the next node is of type "text"
-          // and starts with a space character
-          const nodeAfter = editor.view.state.selection.$to.nodeAfter;
-          const overrideSpace = nodeAfter?.text?.startsWith(" ");
+          editor.chain().focus().deleteRange(range).run();
+          console.log(props.command);
 
-          if (overrideSpace) {
-            range.to += 1;
+          switch (props.command) {
+            case Commands.Heading1:
+              editor.chain().focus().setHeading({ level: 1 }).run();
+              break;
+
+            case Commands.Heading2:
+              editor.chain().focus().setHeading({ level: 2 }).run();
+              break;
+
+            case Commands.Heading3:
+              editor.chain().focus().setHeading({ level: 3 }).run();
+              break;
+
+            case Commands.Bold:
+              editor.chain().focus().toggleBold().run();
+              break;
+
+            case Commands.Italic:
+              editor.chain().focus().toggleItalic().run();
+              break;
+
+            case Commands.Underline:
+              editor.chain().focus().toggleStrike().run();
+              break;
+
+            case Commands.StrikeThrough:
+              editor.chain().focus().toggleStrike().run();
+              break;
+
+            case Commands.Code:
+              editor.chain().focus().toggleCodeBlock().run();
+              break;
+
+            case Commands.Table:
+              break;
+
+            case Commands.CheckList:
+              editor.chain().focus().toggleTaskList().run();
+              break;
+
+            case Commands.BulletList:
+              editor.chain().focus().toggleBulletList().run();
+              break;
+
+            case Commands.NumberedList:
+              editor.chain().focus().toggleOrderedList().run();
+              break;
+
+            default:
+              break;
           }
-
-          editor
-            .chain()
-            .focus()
-            .insertContentAt(range, [
-              {
-                type: this.name,
-                attrs: props,
-              },
-              {
-                type: "text",
-                text: " ",
-              },
-            ])
-            .run();
-
-          window.getSelection()?.collapseToEnd();
         },
         allow: ({ state, range }: any) => {
           const $from = state.doc.resolve(range.from);
@@ -86,45 +116,45 @@ export const SlashMenu = Node.create<SlashMenuOptions>({
 
   atom: true,
 
-  addAttributes() {
-    return {
-      id: {
-        default: null,
-        parseHTML: (element: HTMLElement) => element.getAttribute("data-id"),
-        renderHTML: (attributes: Record<string, any>) => {
-          if (!attributes.id) {
-            return {};
-          }
+  // addAttributes() {
+  //   return {
+  //     id: {
+  //       default: null,
+  //       parseHTML: (element: HTMLElement) => element.getAttribute("data-id"),
+  //       renderHTML: (attributes: Record<string, any>) => {
+  //         if (!attributes.id) {
+  //           return {};
+  //         }
 
-          return {
-            "data-id": attributes.id,
-          };
-        },
-      },
+  //         return {
+  //           "data-id": attributes.id,
+  //         };
+  //       },
+  //     },
 
-      label: {
-        default: null,
-        parseHTML: (element: HTMLElement) => element.getAttribute("data-label"),
-        renderHTML: (attributes: Record<string, any>) => {
-          if (!attributes.label) {
-            return {};
-          }
+  //     label: {
+  //       default: null,
+  //       parseHTML: (element: HTMLElement) => element.getAttribute("data-label"),
+  //       renderHTML: (attributes: Record<string, any>) => {
+  //         if (!attributes.label) {
+  //           return {};
+  //         }
 
-          return {
-            "data-label": attributes.label,
-          };
-        },
-      },
-    };
-  },
+  //         return {
+  //           "data-label": attributes.label,
+  //         };
+  //       },
+  //     },
+  //   };
+  // },
 
-  parseHTML() {
-    return [
-      {
-        tag: `span[data-type="${this.name}"]`,
-      },
-    ];
-  },
+  // parseHTML() {
+  //   return [
+  //     {
+  //       tag: `span[data-type="${this.name}"]`,
+  //     },
+  //   ];
+  // },
 
   renderHTML({
     node,
