@@ -12,7 +12,7 @@ export const ContextMenu = (props: PropsWithChildren<ContextMenuProps>) => {
       <RadixContextMenu.Portal>
         <RadixContextMenu.Content
           alignOffset={5}
-          className="rounded-xl bg-white py-4 pl-4 shadow-lg"
+          className="rounded-xl bg-white p-2 shadow-lg"
         >
           {props.children}
         </RadixContextMenu.Content>
