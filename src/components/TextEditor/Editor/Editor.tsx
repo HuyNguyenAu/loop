@@ -9,14 +9,16 @@ import StarterKit from "@tiptap/starter-kit";
 const font = Open_Sans({ weight: "400", subsets: ["latin"] });
 
 export const Editor = () => {
-  const extensions: Extensions = [
-    StarterKit,
-    SlashMenuExtension,
-  ];
+  const extensions: Extensions = [StarterKit, SlashMenuExtension];
 
   const editor = useEditor({
-    // enableInputRules: false,
+    enableInputRules: false,
     extensions: extensions,
+    editorProps: {
+      attributes: {
+        class: "prose focus:outline-none",
+      },
+    },
     content: `
     <h1>This is a 1st level heading</h1>
     <h2>This is a 2nd level heading</h2>
