@@ -6,9 +6,9 @@ import {
   ClockIcon,
   BellIcon,
 } from "@radix-ui/react-icons";
-import { ContextMenu as RadixContextMenu } from "../Base/ContextMenu/ContextMenu";
-import ScrollArea from "../Base/ScrollArea/ScrollArea";
-import Separator from "../Base/Separator/Separator";
+import { ContextMenu as RadixContextMenu } from "../../Base/ContextMenu/ContextMenu";
+import ScrollArea from "../../Base/ScrollArea/ScrollArea";
+import Separator from "../../Base/Separator/Separator";
 import { ContextMenu } from "./ContextMenu/ContextMenu";
 import { Item, ItemProps } from "./Item/Item";
 import { Open_Sans } from "next/font/google";

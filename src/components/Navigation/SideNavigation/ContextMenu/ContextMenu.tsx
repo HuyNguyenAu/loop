@@ -1,4 +1,3 @@
-import ScrollArea from "../../Base/ScrollArea/ScrollArea";
 import { Item } from "./Item/Item";
 import {
   CursorTextIcon,
@@ -6,7 +5,7 @@ import {
   OpenInNewWindowIcon,
   TrashIcon,
 } from "@radix-ui/react-icons";
-import Separator from "../../Base/Separator/Separator";
+import Separator from "../../../Base/Separator/Separator";
 
 export type ContextMenu = {};
 
