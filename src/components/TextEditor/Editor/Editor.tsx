@@ -79,8 +79,6 @@ export const Editor = () => {
   `,
     }) ?? undefined;
 
-  const editorElement = <EditorContent editor={editor ?? null} />;
-
   return (
     <ScrollArea className={`h-screen ${font.className}`}>
       <BubbleMenu
@@ -89,9 +87,7 @@ export const Editor = () => {
       >
         <ContextMenu editor={editor} />
       </BubbleMenu>
-      <RadixContextMenu classNames="p-4" trigger={editorElement}>
-        <ContextMenu clipboardMode={true} />
-      </RadixContextMenu>
+      <EditorContent editor={editor ?? null} />
     </ScrollArea>
   );
 };
