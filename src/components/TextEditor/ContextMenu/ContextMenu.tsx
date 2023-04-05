@@ -129,16 +129,19 @@ export const ContextMenu = (props: ContextMenu) => {
         <Item
           icon={TextAlignLeftIcon}
           text="Align Left"
+          selected={props.editor?.isActive({ textAlign: "left" })}
           onClick={() => runCommand(Command.AlignLeft)}
         />
         <Item
           icon={TextAlignCenterIcon}
           text="Align Center"
+          selected={props.editor?.isActive({ textAlign: "center" })}
           onClick={() => runCommand(Command.AlignCenter)}
         />
         <Item
           icon={TextAlignRightIcon}
           text="Align Right"
+          selected={props.editor?.isActive({ textAlign: "right" })}
           onClick={() => runCommand(Command.AlignRight)}
         />
       </div>

@@ -2,7 +2,7 @@ import { mergeAttributes, Node, Editor, Range } from "@tiptap/core";
 import { Node as ProseMirrorNode } from "@tiptap/pm/model";
 import { EditorState, PluginKey, Transaction } from "@tiptap/pm/state";
 import Suggestion, { SuggestionOptions } from "@tiptap/suggestion";
-import { Commands } from "./SlashMenu";
+import { Command } from "./SlashMenu";
 import { SlashMenuSuggestion } from "./SlashMenuSuggestion";
 
 export type SlashMenuOptions = {
@@ -43,53 +43,55 @@ export const SlashMenu = Node.create<SlashMenuOptions>({
           props: any;
         }) => {
           editor.chain().focus().deleteRange(range).run();
-          console.log(props.command);
 
           switch (props.command) {
-            case Commands.Heading1:
-              editor.chain().focus().setHeading({ level: 1 }).run();
+            case Command.Heading1:
+              editor.chain().focus().toggleHeading({ level: 1 }).run();
               break;
 
-            case Commands.Heading2:
-              editor.chain().focus().setHeading({ level: 2 }).run();
+            case Command.Heading2:
+              editor.chain().focus().toggleHeading({ level: 2 }).run();
               break;
 
-            case Commands.Heading3:
-              editor.chain().focus().setHeading({ level: 3 }).run();
+            case Command.Heading3:
+              editor.chain().focus().toggleHeading({ level: 3 }).run();
               break;
 
-            case Commands.Bold:
+            case Command.Text:
+              editor.chain().focus().clearNodes().run();
+
+            case Command.Bold:
               editor.chain().focus().toggleBold().run();
               break;
 
-            case Commands.Italic:
+            case Command.Italic:
               editor.chain().focus().toggleItalic().run();
               break;
 
-            case Commands.Underline:
+            case Command.Underline:
               editor.chain().focus().toggleStrike().run();
               break;
 
-            case Commands.StrikeThrough:
+            case Command.StrikeThrough:
               editor.chain().focus().toggleStrike().run();
               break;
 
-            case Commands.Code:
+            case Command.Code:
               editor.chain().focus().toggleCodeBlock().run();
               break;
 
-            case Commands.Table:
+            case Command.Table:
               break;
 
-            case Commands.CheckList:
+            case Command.CheckList:
               editor.chain().focus().toggleTaskList().run();
               break;
 
-            case Commands.BulletList:
+            case Command.BulletList:
               editor.chain().focus().toggleBulletList().run();
               break;
 
-            case Commands.NumberedList:
+            case Command.NumberedList:
               editor.chain().focus().toggleOrderedList().run();
               break;
 

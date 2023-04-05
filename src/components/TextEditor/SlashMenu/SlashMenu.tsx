@@ -17,6 +17,7 @@ import {
   ListBulletIcon,
   StrikethroughIcon,
   TableIcon,
+  TextIcon,
   UnderlineIcon,
 } from "@radix-ui/react-icons";
 import { ScrollArea } from "../../Base/ScrollArea/ScrollArea";
@@ -28,10 +29,11 @@ export type SlashMenuProps = {
   command: any;
 };
 
-export enum Commands {
+export enum Command {
   Heading1,
   Heading2,
   Heading3,
+  Text,
   Bold,
   Italic,
   Underline,
@@ -53,7 +55,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: HeadingIcon,
       onClick: () => {
         props.command({
-          command: Commands.Heading1,
+          command: Command.Heading1,
         });
       },
     },
@@ -62,7 +64,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: HeadingIcon,
       onClick: () => {
         props.command({
-          command: Commands.Heading2,
+          command: Command.Heading2,
         });
       },
     },
@@ -71,7 +73,16 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: HeadingIcon,
       onClick: () => {
         props.command({
-          command: Commands.Heading3,
+          command: Command.Heading3,
+        });
+      },
+    },
+    {
+      text: "Text",
+      icon: TextIcon,
+      onClick: () => {
+        props.command({
+          command: Command.Text,
         });
       },
     },
@@ -80,7 +91,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: FontBoldIcon,
       onClick: () => {
         props.command({
-          command: Commands.Bold,
+          command: Command.Bold,
         });
       },
     },
@@ -89,7 +100,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: FontItalicIcon,
       onClick: () => {
         props.command({
-          command: Commands.Italic,
+          command: Command.Italic,
         });
       },
     },
@@ -98,7 +109,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: UnderlineIcon,
       onClick: () => {
         props.command({
-          command: Commands.Underline,
+          command: Command.Underline,
         });
       },
     },
@@ -107,7 +118,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: StrikethroughIcon,
       onClick: () => {
         props.command({
-          command: Commands.StrikeThrough,
+          command: Command.StrikeThrough,
         });
       },
     },
@@ -116,7 +127,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: CodeIcon,
       onClick: () => {
         props.command({
-          command: Commands.Code,
+          command: Command.Code,
         });
       },
     },
@@ -126,7 +137,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
     //   icon: TableIcon,
     //   onClick: () => {
     //     props.command({
-    //       command: Commands.Table,
+    //       command: Command.Table,
     //     });
     //   },
     // },
@@ -135,7 +146,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: CheckboxIcon,
       onClick: () => {
         props.command({
-          command: Commands.CheckList,
+          command: Command.CheckList,
         });
       },
     },
@@ -144,7 +155,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: ListBulletIcon,
       onClick: () => {
         props.command({
-          command: Commands.BulletList,
+          command: Command.BulletList,
         });
       },
     },
@@ -153,7 +164,7 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
       icon: ListBulletIcon,
       onClick: () => {
         props.command({
-          command: Commands.NumberedList,
+          command: Command.NumberedList,
         });
       },
     },

@@ -39,20 +39,21 @@ export const Editor = () => {
       nested: true,
     }),
     TextAlign.configure({
-      types: ['heading', 'paragraph'],
+      types: ["heading", "paragraph"],
     }),
     SlashMenuExtension,
   ];
 
-  const editor = useEditor({
-    enableInputRules: false,
-    extensions: extensions,
-    editorProps: {
-      attributes: {
-        class: "prose focus:outline-none",
+  const editor =
+    useEditor({
+      enableInputRules: false,
+      extensions: extensions,
+      editorProps: {
+        attributes: {
+          class: "prose max-w-full focus:outline-none",
+        },
       },
-    },
-    content: `
+      content: `
     <p>
       I like lists. Let's add one:
     </p>
@@ -73,12 +74,12 @@ export const Editor = () => {
       Lists would be nothing without list items.
     </p>
   `,
-  }) ?? undefined;
+    }) ?? undefined;
 
   return (
     <ScrollArea className={`h-screen ${font.className}`}>
       <BubbleMenu editor={editor}>
-        <ContextMenu editor={editor}/>
+        <ContextMenu editor={editor} />
       </BubbleMenu>
       <EditorContent editor={editor ?? null} />
     </ScrollArea>
