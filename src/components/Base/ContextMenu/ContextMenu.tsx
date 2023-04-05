@@ -3,6 +3,7 @@ import * as RadixContextMenu from "@radix-ui/react-context-menu";
 
 export type ContextMenuProps = {
   trigger?: ReactNode;
+  classNames?: string;
 };
 
 export const ContextMenu = (props: PropsWithChildren<ContextMenuProps>) => {
@@ -12,7 +13,7 @@ export const ContextMenu = (props: PropsWithChildren<ContextMenuProps>) => {
       <RadixContextMenu.Portal>
         <RadixContextMenu.Content
           alignOffset={5}
-          className="rounded-xl bg-white p-2 shadow-lg"
+          className={`rounded-xl bg-white p-2 shadow-lg ${props.classNames}`}
         >
           {props.children}
         </RadixContextMenu.Content>

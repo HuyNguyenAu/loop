@@ -1,9 +1,3 @@
-import {
-  CheckboxIcon,
-  HeadingIcon,
-  ListBulletIcon,
-  TableIcon,
-} from "@radix-ui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { SlashMenu } from "./SlashMenu";

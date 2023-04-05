@@ -13,7 +13,7 @@ export const ScrollArea = (props: PropsWithChildren<ScrollAreaProps>) => {
     >
       <RadixScrollArea.Viewport
         ref={props.customRef}
-        className="box-border h-full w-full rounded-[inherit]"
+        className="box-border h-full w-full"
       >
         {props.children}
       </RadixScrollArea.Viewport>

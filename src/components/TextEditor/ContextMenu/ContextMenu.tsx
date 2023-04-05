@@ -21,12 +21,15 @@ import { Editor } from "@tiptap/react";
 
 export type ContextMenu = {
   editor?: Editor;
+  clipboardMode?: boolean;
 };
 
 enum Command {
   Cut,
   Copy,
   Paste,
+  Undo,
+  Redo,
   IncreaseIndent,
   DecreaseIndent,
   AlignLeft,
@@ -38,12 +41,15 @@ export const ContextMenu = (props: ContextMenu) => {
   const runCommand = (command: Command) => {
     switch (command) {
       case Command.Cut:
+        props.editor?.chain().focus();
         break;
 
       case Command.Copy:
+        props.editor?.chain().focus().keyboardShortcut("Copy").run();
         break;
 
       case Command.Paste:
+        props.editor?.chain().focus().keyboardShortcut("Paste").run();
         break;
 
       case Command.IncreaseIndent:
@@ -83,8 +89,35 @@ export const ContextMenu = (props: ContextMenu) => {
     }
   };
 
+  const clipboard = (
+    <>
+      <Item
+        icon={ScissorsIcon}
+        text="Cut"
+        keyboard="⌘+X"
+        onClick={() => runCommand(Command.Cut)}
+      />
+      <Item
+        icon={CopyIcon}
+        text="Copy"
+        keyboard="⌘+C"
+        onClick={() => runCommand(Command.Copy)}
+      />
+      <Item
+        icon={ClipboardIcon}
+        text="Paste"
+        keyboard="⌘+V"
+        onClick={() => runCommand(Command.Paste)}
+      />
+    </>
+  );
+
+  if (props.clipboardMode === true) {
+    return clipboard;
+  }
+
   return (
-    <ScrollArea className="h-[350px] rounded-xl bg-white py-4 pl-4 shadow-lg">
+    <ScrollArea className="h-[350px]">
       <div className="flex flex-col gap-1">
         <div className="flex gap-1 p-1  ">
           <Toggle icon={FontBoldIcon} value="" />
@@ -96,24 +129,7 @@ export const ContextMenu = (props: ContextMenu) => {
           <Toggle icon={HeadingIcon} value="" />
         </div>
         <Separator className="bg-[#CFCFCF]" orientation="horizontal" />
-        <Item
-          icon={ScissorsIcon}
-          text="Cut"
-          keyboard="⌘+X"
-          onClick={() => runCommand(Command.Cut)}
-        />
-        <Item
-          icon={CopyIcon}
-          text="Copy"
-          keyboard="⌘+C"
-          onClick={() => runCommand(Command.Copy)}
-        />
-        <Item
-          icon={ClipboardIcon}
-          text="Paste"
-          keyboard="⌘+V"
-          onClick={() => runCommand(Command.Paste)}
-        />
+        {clipboard}
         <Separator className="bg-[#CFCFCF]" orientation="horizontal" />
         <Item
           icon={PinRightIcon}

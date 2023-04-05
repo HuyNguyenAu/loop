@@ -18,6 +18,8 @@ import ListItem from "@tiptap/extension-list-item";
 import BulletList from "@tiptap/extension-bullet-list";
 import OrderedList from "@tiptap/extension-ordered-list";
 import TextAlign from "@tiptap/extension-text-align";
+import { Clipboard } from "./Clipboard";
+import { ContextMenu as RadixContextMenu } from "../../Base/ContextMenu/ContextMenu";
 
 const font = Open_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -42,6 +44,7 @@ export const Editor = () => {
       types: ["heading", "paragraph"],
     }),
     SlashMenuExtension,
+    Clipboard,
   ];
 
   const editor =
@@ -76,12 +79,19 @@ export const Editor = () => {
   `,
     }) ?? undefined;
 
+  const editorElement = <EditorContent editor={editor ?? null} />;
+
   return (
     <ScrollArea className={`h-screen ${font.className}`}>
-      <BubbleMenu editor={editor}>
+      <BubbleMenu
+        className="rounded-xl bg-white py-4 pl-4 shadow-lg"
+        editor={editor}
+      >
         <ContextMenu editor={editor} />
       </BubbleMenu>
-      <EditorContent editor={editor ?? null} />
+      <RadixContextMenu classNames="p-4" trigger={editorElement}>
+        <ContextMenu clipboardMode={true} />
+      </RadixContextMenu>
     </ScrollArea>
   );
 };

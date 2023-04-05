@@ -4,6 +4,7 @@ import { PropsWithChildren } from "react";
 
 export type BubbleMenuProps = {
   editor?: Editor;
+  className?: string;
 };
 
 export const BubbleMenu = (props: PropsWithChildren<BubbleMenuProps>) => {
@@ -12,7 +13,7 @@ export const BubbleMenu = (props: PropsWithChildren<BubbleMenuProps>) => {
   }
 
   return (
-    <TipTapBubbleMenu editor={props.editor} tippyOptions={{ duration: 100 }}>
+    <TipTapBubbleMenu className={props.className} editor={props.editor} tippyOptions={{ duration: 100 }}>
       {props.children}
     </TipTapBubbleMenu>
   );

@@ -240,9 +240,9 @@ export const SlashMenu = forwardRef((props: SlashMenuProps, ref: any) => {
   return (
     <ScrollArea
       customRef={scrollAreaRef}
-      className="h-[21rem] w-60 rounded-xl shadow-lg"
+      className="h-[21rem] w-60 rounded-xl shadow-lg bg-white py-4"
     >
-      <div className="flex flex-col gap-1 py-4 pl-4">{items}</div>
+      <div className="flex flex-col gap-1 pt-[1px] pl-4">{items}</div>
     </ScrollArea>
   );
 });
