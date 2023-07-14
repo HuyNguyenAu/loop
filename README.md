@@ -8,8 +8,6 @@ Sidebar component:  \
 Rich Text Editor with Slash Menu:  \
 <img src="./text-editor.jpg" width="250">
 
-We can also see that the loss is very noisy. Not every impressive, but it works! Yay?
-
 ## Requirements
 - Node v20.3.1.
 - Bun.sh.
