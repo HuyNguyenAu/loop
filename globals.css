@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ProseMirror:focus {
+    outline: none;
+}
+
+.drag-handle-parent {
+    visibility: collapse;
+}
+
+.has-focus .drag-handle {
+    visibility: visible;
+    color: #242424;
+}
+
+.ProseMirror>*+* {
+    margin-top: 0.75em;
+}

@@ -1,29 +1,33 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Ref } from "react";
 import * as RadixScrollArea from "@radix-ui/react-scroll-area";
 
 export type ScrollAreaProps = {
   className?: string;
+  customRef?: Ref<HTMLDivElement>;
 };
 
 export const ScrollArea = (props: PropsWithChildren<ScrollAreaProps>) => {
   return (
     <RadixScrollArea.Root
-      className={`${props.className} w-full pr-4 box-border relative overflow-hidden bg-[#F1F6F9]`}
+      className={`relative box-border w-full overflow-hidden pr-4 ${props.className}`}
     >
-      <RadixScrollArea.Viewport className="h-full w-full box-border rounded-[inherit]">
+      <RadixScrollArea.Viewport
+        ref={props.customRef}
+        className="box-border h-full w-full"
+      >
         {props.children}
       </RadixScrollArea.Viewport>
       <RadixScrollArea.Scrollbar
-        className="h-full w-1.5 py-4 box-border flex touch-none select-none transition-colors"
+        className="box-border flex h-full w-1.5 touch-none select-none py-4 transition-colors"
         orientation="vertical"
       >
-        <RadixScrollArea.Thumb className="flex-1 relative rounded-full bg-[#77797B]" />
+        <RadixScrollArea.Thumb className="relative flex-1 rounded-full bg-[#77797B]" />
       </RadixScrollArea.Scrollbar>
       <RadixScrollArea.Scrollbar
-        className="h-1.5 w-full px-4 box-border flex flex-col touch-none select-none transition-colors"
+        className="box-border flex h-1.5 w-full touch-none select-none flex-col px-4 transition-colors"
         orientation="horizontal"
       >
-        <RadixScrollArea.Thumb className="flex-1 relative rounded-full bg-[#77797B]" />
+        <RadixScrollArea.Thumb className="relative flex-1 rounded-full bg-[#77797B]" />
       </RadixScrollArea.Scrollbar>
       <RadixScrollArea.Corner />
     </RadixScrollArea.Root>

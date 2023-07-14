@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SideNavigation } from "./SideNavigation";
 
 export default {
-  title: "Side Navigation",
+  title: "Navigation/Side Navigation",
   component: SideNavigation,
   tags: ["autodocs"],
 } as Meta<typeof SideNavigation>;

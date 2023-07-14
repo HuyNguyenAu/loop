@@ -18,10 +18,10 @@ export const Item = (props: ItemProps) => {
 
   return (
     <div
-      className={`h-10 w-full pl-6 pr-3 box-border flex items-center rounded-lg cursor-pointer ${font.className} ${backgroundColour} ${hover}`}
+      className={`box-border flex h-10 w-full cursor-pointer items-center rounded-lg pl-6 pr-3 ${font.className} ${backgroundColour} ${hover}`}
     >
       <div className="flex items-center gap-2">
-        <props.icon className="h-5 w-5 box-border" />
+        <props.icon className="box-border h-5 w-5" />
         <p className={`text-sm text-[#424242]`}>
           {props.text}
         </p>

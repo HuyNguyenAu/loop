@@ -17,11 +17,11 @@ export const Input = (props: InputProps) => {
 
   return (
     <div
-      className={`p-4 box-border relative overflow-hidden rounded bg-white shadow ${font.className}`}
+      className={`relative box-border overflow-hidden rounded bg-white p-4 shadow ${font.className}`}
     >
       <input
         value={props.value}
-        className="h-6 w-full box-border leading-none text-slate-700"
+        className="box-border h-6 w-full leading-none text-slate-700"
         onKeyUp={onKeyUp}
         type="text"
         placeholder={props.placeholder}
